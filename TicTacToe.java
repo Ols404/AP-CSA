@@ -3,61 +3,56 @@ import java.util.*;
 
 public class TicTacToe {
 
-    static ArrayList<Integer> playerPositions = new ArrayList<Integer>();
-    static ArrayList<Integer> cpuPositions = new ArrayList<Integer>();
+
+    //The following arrays are the things that are going to keep track of the positions of both the player and the computer
+    private static ArrayList<Integer> playerPositions = new ArrayList<Integer>();
+    private static ArrayList<Integer> cpuPositions = new ArrayList<Integer>();
 
     public static void main(String[] args) {
 
-        ArrayList arrList = new ArrayList();
-
-        arrList.add("A");
-        arrList.add("B");
-        arrList.add("C");
-        arrList.add("D");
-
-        for (int i = 0; i < arrList.size(); i++){
-            System.out.print(arrList.remove(i));
-        }
-
-        System.out.println(arrList.toString());
-
+        //This is the thing that is going to create the board
         char [][] gameBoard = {{' ', '|', ' ', '|', ' '},
-                {'-', '+', '-', '+', '-'},
-                {' ', '|', ' ', '|', ' '},
-                {'-', '+', '-', '+', '-'},
-                {' ', '|', ' ', '|', ' '}};
+                               {'-', '+', '-', '+', '-'},
+                               {' ', '|', ' ', '|', ' '},
+                               {'-', '+', '-', '+', '-'},
+                               {' ', '|', ' ', '|', ' '}};
 
 
         printGameBoard(gameBoard);
 
-
+        //This keeps them in a loop so the players can keep making moves.
         while(true){
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Enter your placement (1-9)");
+            System.out.println("Enter your placement (1 - 9)");
             int playerPos = scanner.nextInt();
 
             while(playerPositions.contains(playerPos) || cpuPositions.contains(playerPositions)){
-                System.out.println("position is taken, enter a correct position");
+                System.out.println("This position is taken, please enter a correct position");
                 playerPos = scanner.nextInt();
             }
 
-            placePiece(gameBoard, playerPos, "player");
+            //This takes in the user input and places the symbol and the position that was stated.
+            placeDownPiece(gameBoard, playerPos, "player");
 
             Random rand = new Random();
             int cpuPos = rand.nextInt(9) + 1;
             while(playerPositions.contains(cpuPos) || cpuPositions.contains(cpuPos)){
                 cpuPos = rand.nextInt(9) + 1;
             }
-            placePiece(gameBoard, cpuPos, "cpu");
+
+
+            //This takes in the user input and places the symbol and the position that was stated.
+            placeDownPiece(gameBoard, cpuPos, "cpu");
 
             printGameBoard(gameBoard);
 
-           String result =  checkWinner();
+           String result =  checkTheWinner();
             System.out.println(result);
         }
 
     }
 
+    //Nested For-each loop that prints the whole gameBoard
     public static void printGameBoard(char[][] gameBoard){
         for(char[] row: gameBoard){
             for(char c: row){
@@ -67,7 +62,7 @@ public class TicTacToe {
         }
     }
 
-    public static void placePiece(char[][] gameBoard, int pos, String user){
+    public static void placeDownPiece(char[][] gameBoard, int pos, String user){
 
         char symbol = ' ';
 
@@ -112,7 +107,7 @@ public class TicTacToe {
         }
     }
 
-    public static String checkWinner(){
+    public static String checkTheWinner(){
 
         List topRow = Arrays.asList(1, 2, 3);
         List midRow = Arrays.asList(4, 5, 6);
@@ -125,31 +120,31 @@ public class TicTacToe {
         List cross1= Arrays.asList(1, 5, 9);
         List cross2 = Arrays.asList(7, 5, 3);
 
-        List<List> winning = new ArrayList<List>();
+        List<List> winningConditions = new ArrayList<List>();
 
 
-        winning.add(topRow);
-        winning.add(midRow);
-        winning.add(bottomRow);
-        winning.add(leftCol);
-        winning.add(midCol);
-        winning.add(rightCol);
-        winning.add(cross1);
-        winning.add(cross2);
+        winningConditions.add(topRow);
+        winningConditions.add(midRow);
+        winningConditions.add(bottomRow);
+        winningConditions.add(leftCol);
+        winningConditions.add(midCol);
+        winningConditions.add(rightCol);
+        winningConditions.add(cross1);
+        winningConditions.add(cross2);
 
-        for(List l: winning){
+        for(List l: winningConditions){
             if(playerPositions.containsAll(l)){
                 return "Congrats! You win!";
             } else if(cpuPositions.containsAll(l)){
                 return "CPU wins! GG Noob";
             } else if(playerPositions.size() + cpuPositions.size() == 9){
-                return "WTF";
+                return "This is a tie!";
             }
         }
 
 
 
-        return "";
+        return " ";
     }
 
 }
