@@ -26,6 +26,8 @@ public class TicTacToe {
             System.out.println("Enter your placement (1 - 9)");
             int playerPos = scanner.nextInt();
 
+            
+            //The two blocks of code underneath are the ones that keep track of where the the positions of both the player and the computer are
             while(playerPositions.contains(playerPos) || cpuPositions.contains(playerPositions)){
                 System.out.println("This position is taken, please enter a correct position");
                 playerPos = scanner.nextInt();
@@ -62,6 +64,8 @@ public class TicTacToe {
         }
     }
 
+    
+    //This code adds a symbol to the designated position.
     public static void placeDownPiece(char[][] gameBoard, int pos, String user){
 
         char symbol = ' ';
@@ -107,6 +111,8 @@ public class TicTacToe {
         }
     }
 
+    
+    //These are conditions that checks all the winning conditions 
     public static String checkTheWinner(){
 
         List topRow = Arrays.asList(1, 2, 3);
