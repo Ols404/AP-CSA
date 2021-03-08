@@ -7,7 +7,7 @@
  */
 
 public class Maze {
-    private char[][] myMaze;
+    private char[][] myMaze; //from the original file, the name was changed from myMap to myMaze to remain consistent with the MazeRunner class
     private char[][] solution;
     private int row;
     private int col;
