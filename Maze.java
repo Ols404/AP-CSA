@@ -18,7 +18,7 @@ public class Maze {
     public Maze() {
         row = 1;
         col = 0;
-        myMaze = new char[20][20];
+        myMaze = new char[20][20]; //the name here is changed as well
         solution = new char[20][20];
         fillMap(myMaze);
         fillMap(solution);
