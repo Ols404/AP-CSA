@@ -31,7 +31,7 @@ public class MazeRunner {
     public void game(Scanner inputS) {
         while(!myMaze.didIWin()) { //while the user has not yet won
             userMove(inputS); //calls the user move method
-            moveMessage(); //calls the move message method
+            //move message function should be called here later
         }
     }
 
@@ -55,7 +55,7 @@ public class MazeRunner {
         System.out.println("Move: " + ++moves); //prints out the user's current move count
         String userMoveChoice = getUserMove(inputS); //gets the user's move choice
         System.out.println("You chose to move: " + userMoveChoice); //prints out the user's move choice
-        navigatePit(userMoveChoice, inputS); //calls the navigate pit method
+        //navigate pit method should be called here later
         if (userMoveChoice.equals("R") && myMaze.canIMoveRight()) { //ensures that the user is able to move right
             myMaze.moveRight(); //moves right
         } else if (userMoveChoice.equals("L") && myMaze.canIMoveLeft()) {
@@ -75,32 +75,5 @@ public class MazeRunner {
     public static String getValidStringInput(Scanner inputS, String question) {
         System.out.print(question + " "); //prints the question the user must respond to
         return inputS.nextLine(); //returns the String input
-    }
-
-    //keeps track of the move limit (the user only has 100 steps to move before the exit to the maze closes)
-    private void moveMessage() {
-        if (moves == 50) {
-            System.out.println("Warning: You have made 75 moves, you only have 25 moves left to escape.");
-        } else if (moves == 75) {
-            System.out.println("Alert! You have made 75 moves, you only have 25 moves left to escape.");
-        } else if (moves == 90) {
-            System.out.println("You have made 90 moves, you only have 10 moves left to escape!");
-        } else if (moves == 100) {
-            System.out.println("Oh no! You took too long to escape, so you lost.");
-            System.exit(0); //exits the program
-        }
-    }
-
-    //navigating pits
-    private void navigatePit(String userMoveChoice, Scanner inputS) {
-        while (myMaze.isThereAPit(userMoveChoice)) { //checks to see if there is a pit
-            String jumpOverPit = getValidStringInput(inputS, "Watch out! There's a pit ahead, jump it? " +
-                    "Type 'Y' for yes, and any other key for no."); //asks the user if they want to jump over the pit
-            if (jumpOverPit.equals("Y")) { //if the user wants to jump over the pit
-                myMaze.jumpOverPit(userMoveChoice); //jumps over the pit in the direction given
-            } else {
-                userMove(inputS); //asks the user to chose another move
-            }
-        }
     }
 }
