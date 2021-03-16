@@ -104,3 +104,5 @@ public class MazeRunner {
         }
     }
 }
+
+//some modifications may need to be made or built upon for this code to make it more compatible with the extension portion
