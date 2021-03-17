@@ -1,4 +1,3 @@
-//Things to do: Program the conditional for plural, program some default coordinates(given by claned), add some comments
 //Breadth First Search Algorithm
 package com.LoafBurger;
 
