@@ -1,3 +1,5 @@
+package com.LoafBurger;
+
 import java.util.*; //import statement
 
 public class MazeRunner {
@@ -12,14 +14,6 @@ public class MazeRunner {
         moves = 0; //sets the number of moves to zero
     }
 
-    //main method
-    public static void main(String[] args) {
-        MazeRunner myRunner = new MazeRunner();
-        Scanner inputS = new Scanner(System.in); //creates the scanner
-        myRunner.intro(); //calls the introduction method
-        myRunner.game(inputS); //calls the game method
-        System.out.println("Congratulations, you made it out alive!"); //prints a congratulatory message
-    }
 
     //introduction
     public void intro() {
@@ -104,5 +98,3 @@ public class MazeRunner {
         }
     }
 }
-
-//some modifications may need to be made or built upon for this code to make it more compatible with the extension portion
