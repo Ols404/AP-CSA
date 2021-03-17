@@ -1,3 +1,5 @@
+package com.LoafBurger;
+
 /*
  * This is the Maze class. It has all of the methods and information needed
  * to build a specific maze and have a MazeRunner get from the start to the end.
@@ -299,6 +301,8 @@ public class Maze {
         solution[13][15] = '0';
         solution[18][10] = '0';
     }
+
+    //
 
     /*
      * Determines if the user reached the end of the maze.
